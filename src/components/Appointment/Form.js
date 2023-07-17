@@ -46,6 +46,8 @@ export default function Form(props) {
             onChange={(event) => setStudent(event.target.value)}
           />
         </form>
+        <section className="appointment__validation">{error}</section>
+
         <InterviewerList 
           interviewers={props.interviewers} 
           value={interviewer}
@@ -54,7 +56,7 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={() => cancel()}>Cancel</Button>
+          <Button danger onClick={() => cancel()} >Cancel</Button>
           <Button confirm onClick={() => validate()} >Save</Button>
         </section>
       </section>
