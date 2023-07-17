@@ -178,8 +178,8 @@ storiesOf("Appointment", module)
   ))
   .add("Edit", () => (
     <Form
-      student="Aline Bellozo"
-      interviewer={interviewer.id}
+      student="Aziz Rahman"
+      interviewer={interviewer}
       interviewers={interviewers}
       onSave={action("onSave")}
       onCancel={action("onCancel")}
