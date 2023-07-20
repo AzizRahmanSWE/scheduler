@@ -49,9 +49,28 @@ export default function Application(props) {
         time={appointment.time}
         interview={interview}
         interviewers={interviewers}
+        bookInterview={bookInterview}
       />
     );
   })
+
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    Axios
+      .put(`/api/appointments/${id}`, appointment)
+      setState({ ...state, appointments });
+  }
 
   return (
     <main className="layout">
@@ -65,7 +84,7 @@ export default function Application(props) {
         <nav className="sidebar__menu">
         <DayList
           days={state.days}
-          value={state.day}
+          day={state.day}
           setDay={setDay}
         />
         </nav>
