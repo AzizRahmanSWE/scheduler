@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
-import Axios from "axios";
+import axios from "axios";
 import { 
   getAppointmentsForDay,
   getInterview,
@@ -15,17 +15,54 @@ export default function Application(props) {
     day: "Monday",
     days: [],
     appointments: {},
-    interviewers: {}
+    interviewers: {},
   });
+  
   const setDay = (day) => setState({ ...state, day });
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
+  
+  function bookInterview(id, interview) {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios
+      .put(`/api/appointments/${id}`, { interview })
+      .then(() => setState({ ...state, appointments }))
+      .catch((err) => console.log(err));
+  }
+
+  function cancelInterview (id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios
+      .delete(`/api/appointments/${id}`)
+      .then(() => setState({ ...state, appointments }))
+      .catch((err) => console.log(err));
+  }
 
   useEffect(() => {
     Promise.all([
-      Axios.get("/api/days"),
-      Axios.get("/api/appointments"),
-      Axios.get("/api/interviewers")
-    ])
-      .then((all) => {
+      axios.get("/api/days"),
+      axios.get("/api/appointments"),
+      axios.get("/api/interviewers"),
+    ]).then((all) => {
         setState((prev) => ({
           ...prev,
           days: all[0].data,
@@ -34,10 +71,6 @@ export default function Application(props) {
         }));
       })
   },[])
-
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-
-  const interviewers = getInterviewersForDay(state, state.day)
 
   const schedule = dailyAppointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
@@ -50,27 +83,11 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   })
 
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-    Axios
-      .put(`/api/appointments/${id}`, appointment)
-      setState({ ...state, appointments });
-  }
 
   return (
     <main className="layout">
