@@ -20,10 +20,23 @@ function getInterview(state, interview) {
 
   const {student, interviewer} = interview;
   const interviewerData = state.interviewers[interviewer];
+  
   return {
     student,
     interviewer: interviewerData
   }
 }
 
-export { getAppointmentsForDay, getInterview };
+function getInterviewersForDay(state, day) {
+  const filteredDay = state.days.find((d) => d.name === day);
+
+  if (!filteredDay || !filteredDay.interviewers.length) {
+    return [];
+  }
+
+  const interviewers = filteredDay.interviewers.map((interviewerId) => state.interviewers[interviewerId]
+  );
+  return interviewers;
+}
+
+export { getAppointmentsForDay, getInterview, getInterviewersForDay };
