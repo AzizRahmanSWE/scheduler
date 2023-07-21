@@ -17,26 +17,16 @@ export default function Form(props) {
     props.onCancel();
   };
 
-  // function validate() {
-  //   if (student === "") {
-  //     setError("Student name cannot be blank");
-  //     return;
-  //   }
-  //   if (interviewer === null) {
-  //     setError("Please select an interviewer");
-  //     return;
-  //   }
-
-  //   setError("");
-
-  //   props.onSave(student, interviewer);
-  // }
+  const save = (event) => {
+    event.preventDefault();
+    props.onSave(student, interviewer)
+  }
 
 
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+        <form autoComplete="off">
           <input
             className="appointment__create-input text--semi-bold"
             name="name"
@@ -57,7 +47,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm>props.onSave</Button>
+          <Button confirm onClick={save}>Save</Button>
         </section>
       </section>
     </main>
