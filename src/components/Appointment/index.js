@@ -84,9 +84,8 @@ export default function Appointment(props) {
           />
         )}
         {mode === DELETING && (
-          <Status message="Deleting..." 
-        />
-        )}
+          <Status message="Deleting..."/>
+        )};
     </article>
   );
 }
