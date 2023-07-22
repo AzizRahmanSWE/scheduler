@@ -30,7 +30,10 @@ export default function useApplicationData() {
   function updateSpots(appointments, id) {
     const day = state.days.find((day) => day.appointments.includes(id));
     
-    
+    if(!day) {
+      console.error(`Day not found for appointment ID ${id}`)
+      return state.days;
+    }
     const spots = day.appointments.filter((appointmentId) => {
       return appointments[appointmentId].interview === null;
     });
@@ -58,7 +61,11 @@ export default function useApplicationData() {
 
     return axios
       .put(`/api/appointments/${id}`, { interview })
-      .then(() => setState({ ...state, appointments }))
+      .then(() => setState({ 
+        ...state,
+        appointments,
+        days: updateSpots(appointments, id)
+      }))
       .catch((err) => console.log(err));
   }
 
@@ -77,7 +84,7 @@ export default function useApplicationData() {
       .then(() => setState({ 
         ...state,
         appointments,
-        days: updateSpots(id, appointments)}))
+        days: updateSpots(appointments, id)}))
       .catch((err) => console.log(err));
     }
 
