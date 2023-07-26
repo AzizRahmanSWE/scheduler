@@ -19,7 +19,8 @@ it("renders a default button style", () => {
   const { getByText } = render(<Button>Default</Button>);
   expect(getByText("Default")).toHaveClass("button");
 });
-("renders a confirm button", () => {
+
+it("renders a confirm button", () => {
   const { getByText } = render(<Button confirm>Confirm</Button>);
   expect(getByText("Confirm")).toHaveClass("button--confirm");
 });
