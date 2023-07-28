@@ -7,6 +7,7 @@ import Empty from "./Empty";
 import Form from "./Form";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 export default function Appointment(props) {
   const EMPTY = "EMPTY";
@@ -85,6 +86,12 @@ export default function Appointment(props) {
         )}
         {mode === DELETING && (
           <Status message="Deleting..."/>
+        )}
+        {mode === ERROR_SAVE && (
+          <Error message="Error to save the interview" onClose={back}/>
+        )}
+        {mode === ERROR_DELETE && (
+          <Error message="Error to delete the interview" onClose={back}/>
         )}
     </article>
   );
