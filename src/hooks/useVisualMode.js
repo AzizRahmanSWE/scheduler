@@ -13,9 +13,9 @@ export default function useVisualMode(initial) {
       history.push(newMode);
       
     } else {
-      setMode(newMode)
+      setMode(newMode);
     }
-
+    return {};
   }
 
   function back() {
