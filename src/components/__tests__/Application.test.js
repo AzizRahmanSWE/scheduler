@@ -183,7 +183,7 @@ describe("Application", () => {
     
     // Confirm the delete
     fireEvent.click(queryByText(appointment, "Confirm"))
-    // Check for text "Deleting" is displayed
+    // Check for text "Deleting..." is displayed
     expect(getByText(appointment, "Deleting...")).toBeInTheDocument();
 
     // wait for the error message.
