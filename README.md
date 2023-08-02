@@ -1,9 +1,12 @@
 # Interview Scheduler
 
 ## Final Product ScreenShots
-!["Screenshot - Monday - Mainpage"]("https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png")
+!["Screenshot - Monday - Mainpage"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png)
+
 !["Screenshot - Tuesday - Interview Delete"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Tuesday%20-%20Delete.png)
+
 !["Screenshot - Friday - Create Interview"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20createInterview.png)
+
 !["Screenshot - Friday - After Creating Interview"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20interviewConfirmation.png)
 
 ## Setup
