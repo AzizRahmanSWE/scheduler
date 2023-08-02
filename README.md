@@ -3,21 +3,14 @@
 ## Setup
 
 Install dependencies with `npm install`.
-
-## Running Webpack Development Server
-
-```sh
-npm start
-```
-
-## Running Jest Test Framework
-
-```sh
-npm test
-```
-
-## Running Storybook Visual Testbed
-
-```sh
-npm run storybook
-```
+axios
+react
+react-dom
+react-scripts
+react-test-renderer
+@testing-library/react-hooks
+@testing-library/jest-dom
+storybook
+prop-types
+sass
+## Running Webpack Development Serv
