@@ -27,15 +27,13 @@ describe("Appointments", () => {
   })
 
   it("should edit an interview", () => {
-    // find and click "add" button
+
     cy.get("[alt=Edit]").first().click({ force: true });
 
     // find the input field with the students name and edit it.
     cy.get("[data-testid=student-name-input]")
       .clear()  
       .type("Lydia Miller-Jones");
-
-    // change the interviewer selected to "Tori Malcome"
     cy.get("[alt='Tori Malcolm']").click();
 
     // press the save button.

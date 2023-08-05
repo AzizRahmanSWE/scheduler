@@ -1,18 +1,21 @@
 # Interview Scheduler
 
 ## Final Product ScreenShots
-!["Screenshot - Monday - Mainpage"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png)
+!["Mainpage - Selected Monday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png)
 
-!["Screenshot - Tuesday - Interview Delete"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Tuesday%20-%20Delete.png)
+!["Deleting an Interview - Selected Tuesday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Tuesday%20-%20Delete.png)
 
-!["Screenshot - Friday - Create Interview"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20createInterview.png)
+!["Creating an Interview - Selected Friday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20createInterview.png)
 
-!["Screenshot - Friday - After Creating Interview"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20interviewConfirmation.png)
+!["After Creating Interview - Selected Friday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20interviewConfirmation.png)
 
 ## Setup
 Install dependencies with `npm install`.
 
 ## Running Webpack Development Server
+Go to https://github.com/Friies/scheduler-api and clone the repository to your local machine;
+Open a second terminal for the scheduler-api while using the first termial for scheduler; Type the following command on both terminals to start:
+
 ```sh
 npm start
 ```

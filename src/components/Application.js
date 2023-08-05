@@ -11,27 +11,28 @@ import {
 
 export default function Application(props) {
 
-  const { state,
+  const { 
+    state,
     setDay,
     bookInterview,
     cancelInterview
   } = useApplicationData();
   
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
-  const schedule = getAppointmentsForDay(state, state.day).map(
-    (appointment) => {
-      return (
-        <Appointment 
-          key={appointment.id}
-          {...appointment}
-          interview={getInterview(state, appointment.interview)}
-          interviewers={interviewers}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
-        />
-      )
-    }
-  )
+  const schedule = dailyAppointments.map((appointment) => {
+    return (
+      <Appointment 
+        key={appointment.id}
+        {...appointment}
+        interview={getInterview(state, appointment.interview)}
+        interviewers={interviewers}
+        bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
+      />
+    );
+  })
     
   return (
     <main className="layout">

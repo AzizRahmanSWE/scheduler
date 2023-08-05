@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import "components/DayListItem.scss";
+import formatSpots from "../helpers/formatSpots";
 
 export default function DayListItem(props) {
 
@@ -9,25 +10,16 @@ export default function DayListItem(props) {
     "day-list__item--full": props.spots === 0
   });
 
-  const formatSpots = () => {
-    if (props.spots === 0) {
-      return "no spots remaining"
-    }
-    if (props.spots === 1) {
-      return "1 spot remaining"
-    }
-    return `${props.spots} spots remaining`;
-  };
 
   return (
     <li 
+      data-testid="day"
       className={dayClass}
-      data-testid='day'
       selected={props.selected}
-      onClick={() => props.setDay(props.name)} 
+      onClick={props.setDay}
     >
       <h2 className="text--regular">{props.name}</h2>
-      <h3 className="text--light">{formatSpots()}</h3>
+      <h3 className="text--light">{formatSpots(props.spots)}</h3>
     </li>
   );
 }

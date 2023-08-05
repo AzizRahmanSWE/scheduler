@@ -138,7 +138,7 @@ describe("Application", () => {
     // Wait until the interview appointment is rendered.
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
-    // Find the student name (Archie Cohen) & click the "Edit" button on the Edit appointment.
+    // Find the student name (Archie Cohen) & click the "Edit" button.
     const appointment = getAllByTestId(container, "appointment")[0];
     fireEvent.click(queryByAltText(appointment, "Add"));
     
@@ -183,7 +183,7 @@ describe("Application", () => {
     
     // Confirm the delete
     fireEvent.click(queryByText(appointment, "Confirm"))
-    // Check for text "Deleting..." is displayed
+
     expect(getByText(appointment, "Deleting...")).toBeInTheDocument();
 
     // wait for the error message.
