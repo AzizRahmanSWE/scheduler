@@ -1,13 +1,13 @@
 # Interview Scheduler
 
 ## Final Product ScreenShots
-!["Mainpage - Selected Monday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png)
+!["Mainpage - Selected Monday"]("https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Monday%20-%20Main.png")
 
-!["Deleting an Interview - Selected Tuesday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Tuesday%20-%20Delete.png)
+!["Deleting an Interview - Selected Tuesday"]("https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Tuesday%20-%20Delete.png")
 
-!["Creating an Interview - Selected Friday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20createInterview.png)
+!["Creating an Interview - Selected Friday"]("https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20createInterview.png")
 
-!["After Creating Interview - Selected Friday"](https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20interviewConfirmation.png)
+!["After Creating Interview - Selected Friday"]"(https://github.com/Friies/scheduler/blob/master/docs/Screenshot%20-%20Friday%20-%20interviewConfirmation.png")
 
 ## Setup
 Install dependencies with `npm install`.
