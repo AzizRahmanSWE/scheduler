@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import updateSpots from "helpers/updateSpots";
 
 export default function useApplicationData() {
 
@@ -28,37 +27,25 @@ export default function useApplicationData() {
     });
   }, []);
 
-  function updateSpots(appointments, dayName) {
-    // get the index of the day obj whose day matches the given day
-    const foundDayIndex = state.days.findIndex(
-      (dayObj) => dayObj.name === dayName
-    );
+  function updateSpots(id, appointments) {
+    const day = state.days.find((day) => day.appointments.includes(id));
 
-    // get the dayObj at foundDayIndex
-    const foundDay = state.days[foundDayIndex];
+    if (!day) {
+      console.log("Day not found for appointment ID", id)
+      return state.days;
+    }
 
-    // translate the day appointments id from the given appointments to their interview properties
-    const foundDayInterviews = foundDay.appointments.map(
-      (appointmentId) => appointments[appointmentId].interview
-    );
+    const spots = day.appointments.filter((appointmentId) => {
+      return appointments[appointmentId].interview === null;
+    });
 
-    // get the number of falsy interviews
-    const spotsRemaining = foundDayInterviews.filter(
-      (interview) => !interview
-    ).length;
-
-    // const spotsRemaining2 = foundDayInterviews.length - foundDayInterviews.filter(Boolean).length;
-
-    // make a copy of foundDay and override the spots with spotsRemaining
-    const newFoundDay = { ...foundDay, spots: spotsRemaining };
-
-    // create a copy of state.days, replacing the foundDay obj (at foundDayIndex) with newFoundDay
-    const newDays = state.days
-      .slice(0, foundDayIndex)
-      .concat(newFoundDay)
-      .concat(state.days.slice(foundDayIndex + 1));
-
-    return newDays;
+    const updatedDaysData = state.days.map((dayObject) => {
+      if (dayObject.appointments.includes(id)) {
+        return {...dayObject, spots: spots.length};
+      }
+      return dayObject;
+    });
+    return updatedDaysData;
   }
   
   function bookInterview(id, interview) {
@@ -74,11 +61,10 @@ export default function useApplicationData() {
 
     return axios
       .put(`/api/appointments/${id}`, { interview })
-      .then(() => 
-        setState({ 
+      .then(() => setState({ 
           ...state,
           appointments,
-          days: updateSpots(appointments, state.day)
+          days: updateSpots(id, appointments)
         })
       )
   };
@@ -95,11 +81,10 @@ export default function useApplicationData() {
 
     return axios
       .delete(`/api/appointments/${id}`)
-      .then(() => 
-        setState({ 
+      .then(() => setState({ 
           ...state,
           appointments,
-          days: updateSpots(appointments, state.day)
+          days: updateSpots(id, appointments)
         })
       )
   };

@@ -41,10 +41,10 @@ storiesOf("DayListItem", module)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <InterviewerListItem
-     name={interviewer.name} 
-     avatar={interviewer.avatar} 
-     setInterviewer={() => action("setInterviewer")(interviewer.id)}
+    <DayListItem
+      name="Tuesday" 
+      setDay={() => action("setDay")("Tuesday")} 
+      spots = {5}
     /> 
   ));
 
@@ -78,7 +78,7 @@ storiesOf("DayList", module)
     <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
   ))
   .add("Wednesday", () => (
-      <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+    <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
   ));
 
 const interviewer = {

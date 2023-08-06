@@ -142,15 +142,15 @@ describe("Application", () => {
     const appointment = getAllByTestId(container, "appointment")[0];
     fireEvent.click(queryByAltText(appointment, "Add"));
     
-    // // Find the student name input and replace it with a different name.
+    // Find the student name input and replace it with a different name.
     fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
       target: { value: "Lydia Miller-Jones" }
     });
     
-    // // Change the inteviewer.
+    // Change the inteviewer.
     fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
     fireEvent.click(getByText(appointment, "Save"));
-    // console.log(prettyDOM(appointment))
+
 
     
     // Check for text "Saving" is displayed

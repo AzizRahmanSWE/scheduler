@@ -10,7 +10,7 @@ import {
 } from "helpers/selectors";
 
 export default function Application(props) {
-
+  
   const { 
     state,
     setDay,
@@ -18,10 +18,10 @@ export default function Application(props) {
     cancelInterview
   } = useApplicationData();
   
-
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
-  const schedule = dailyAppointments.map((appointment) => {
+
+  const schedule = getAppointmentsForDay(state, state.day).map(
+    (appointment) => {
     return (
       <Appointment 
         key={appointment.id}
